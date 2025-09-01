@@ -29,6 +29,7 @@
             line-height: 1.5;
             overflow: hidden;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -156,6 +157,24 @@
             margin: 20px 0;
             text-align: center;
         }
+        .salary-breakdown {
+            background-color: #e8f4f8;
+            border: 1px solid #b3d9e6;
+            border-left: 5px solid #2196f3;
+            color: #1565c0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .salary-breakdown h4 {
+            margin: 0 0 10px 0;
+            color: #1565c0;
+        }
+        .salary-breakdown ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -186,7 +205,7 @@
 
         <div class="input-section">
             <div class="input-group">
-                <label for="tuition">Annual Tuition ($)</label>
+                <label for="tuition">Annual Tuition ($ - includes books, supplies, insurance)</label>
                 <input type="number" id="tuition" value="80000" min="0">
             </div>
             <div class="input-group">
@@ -224,28 +243,70 @@
 
         <div id="warning-section"></div>
 
-        <h3 style="color: #2c3e50; margin-top: 30px;">Repayment Options Comparison</h3>
+        <div class="tip">
+            💡 Tip: Rural areas typically offer higher starting salaries ($180,000-250,000+) compared to major cities ($150,000-200,000). Consider location strategy for debt management!
+        </div>
+
+        <div class="salary-breakdown">
+            <h4>💰 Salary Calculation Breakdown:</h4>
+            <ul>
+                <li><strong>Annual salary</strong>: $160,000</li>
+                <li><strong>Monthly gross</strong>: $13,333 ($160,000 ÷ 12)</li>
+                <li><strong>Monthly take-home after taxes</strong>: $8,800 (assuming ~34% tax rate)</li>
+                <li><strong>Net monthly income</strong>: $8,800 minus the loan payment</li>
+            </ul>
+        </div>
+
+        <h3 style="color: #2c3e50; margin-top: 30px;">Repayment Options Comparison <span style="font-size: 0.8em; color: #7f8c8d; font-weight: normal;">(assumes $160,000 base salary)</span></h3>
         <table class="comparison-table">
             <thead>
                 <tr>
                     <th>Loan Term</th>
-                    <th>Monthly Payment</th>
+                    <th>Monthly Payment (to pay off in this term)</th>
                     <th>Total Repayment</th>
                     <th>Total Interest</th>
-                    <th>Net Monthly After Tax*</th>
+                    <th>Net Monthly Income After Tax & Loan</th>
                 </tr>
             </thead>
             <tbody id="comparison-body">
             </tbody>
         </table>
 
-        <div class="tip">
-            💡 Tip: Rural areas typically offer higher starting salaries ($180,000-250,000+) compared to major cities ($150,000-200,000). Consider location strategy for debt management!
-        </div>
+        <table class="comparison-table" style="margin-top: 30px;">
+            <thead>
+                <tr style="background-color: #2c3e50;">
+                    <th style="color: white; padding: 15px;">City Example</th>
+                    <th style="color: white; padding: 15px;">Average Rent</th>
+                    <th style="color: white; padding: 15px;">Total Monthly Expenses</th>
+                    <th style="color: white; padding: 15px;">Recommended Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #f8f9fa;">
+                    <td style="padding: 12px 15px;"><strong>NYC/SF</strong></td>
+                    <td style="padding: 12px 15px;">$2,500-3,500</td>
+                    <td style="padding: 12px 15px;">$4,000-5,000</td>
+                    <td style="padding: 12px 15px;">$200,000+</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 15px;"><strong>Suburbs</strong></td>
+                    <td style="padding: 12px 15px;">$1,500-2,200</td>
+                    <td style="padding: 12px 15px;">$2,500-3,500</td>
+                    <td style="padding: 12px 15px;">$170,000+</td>
+                </tr>
+                <tr style="background-color: #f8f9fa;">
+                    <td style="padding: 12px 15px;"><strong>Rural</strong></td>
+                    <td style="padding: 12px 15px;">$800-1,400</td>
+                    <td style="padding: 12px 15px;">$1,800-2,500</td>
+                    <td style="padding: 12px 15px;">$150,000+</td>
+                </tr>
+            </tbody>
+        </table>
 
         <div class="footer">
             <p><strong>Follow @drpallakrazdan on Instagram for more dental school tips!</strong></p>
-            <p>*Assuming $150,000 average starting salary with ~33% tax rate = ~$8,375 monthly take-home</p>
+            <p>*Starting salaries are typically $160,000+ base, plus % of production/collections (varies by contract, location, skill-set)</p>
+            <p>*Calculation uses $160,000 base salary (~$8,800 monthly take-home after taxes)</p>
             <p>This calculator is for educational purposes only.</p>
         </div>
     </div>
@@ -275,7 +336,7 @@
                                      (Math.pow(1 + monthlyRate, months) - 1);
                 const totalRepayment = monthlyPayment * months;
                 const totalInterest = totalRepayment - totalLoan;
-                const netMonthlyAfterTax = 8375 - monthlyPayment;
+                const netMonthlyAfterTax = 8800 - monthlyPayment; // Updated to $160k salary = $8,800 take-home
                 
                 minMonthlyPayment = Math.min(minMonthlyPayment, monthlyPayment);
                 maxMonthlyPayment = Math.max(maxMonthlyPayment, monthlyPayment);
